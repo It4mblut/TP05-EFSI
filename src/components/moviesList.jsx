@@ -19,15 +19,20 @@ const MoviesList = () => {
     };
 
     fetchMovies();
-    
+
   }, []);
+
+if (loading) return <div>Loading...</div>;
 
   return (
     <div>
       <h2>Movies</h2>
       <ul>
         {movies.map((movie) => (
-          <li key={movie.id}>{movie.title}</li>
+          <li key={movie.id}>
+           <strong> {movie.title}</strong>
+           - ({movie.year})
+            </li>
         ))}
       </ul>
     </div>
