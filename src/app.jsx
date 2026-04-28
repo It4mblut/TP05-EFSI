@@ -1,7 +1,6 @@
 import {useState} from 'react';
-import reactLogo from './assets/react.svg';
 import './App.css';
-import MoviesList from './components/moviesList';
+import ListaPelicula from './movieList.jsx';
 
 function App() {
     return (
