@@ -1,7 +1,27 @@
 import axios from 'axios'
 
-const api = axios.create({
-    baseURL: 'https://api.themoviedb.org/3'
-})
+const API_KEY = "1483676";
+const BASE_URL = "http://www.omdbapi.com/";
 
-export default api
+ async function buscarPeli (titulo) {
+  const respuesta = await axios.get(BASE_URL, {
+    params: {
+      s: titulo,
+      apikey: API_KEY,
+    },
+  });
+  return respuesta.data;
+}
+
+
+async function detallesPeli (imdbID) {
+  const respuesta = await axios.get(BASE_URL, {
+    params: {
+      i: imdbID,
+      apikey: API_KEY,
+    },
+  });
+  return respuesta.data;
+}
+
+export {buscarPeli, detallesPeli}
