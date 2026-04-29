@@ -1,13 +1,13 @@
-function MovieCard({ pelis, onSelect }) {
+function MovieCard({ peli, onSelect }) {
   return (
-    <div onClick={() => onSelect(pelis)}>
+    <div onClick={() => onSelect(peli)}>
       <img
-        src={pelis.Poster !== "Poster no encontrado" ? pelis.Poster : "https://via.placeholder.com/150"}
-        alt={pelis.Title}
+        src={peli.Poster !== "N/A" ? peli.Poster : "https://via.placeholder.com/150"}
+        alt={peli.Title}
       />
-      <h3>{pelis.Title}</h3>
-      <p>{pelis.Year}</p>
-      <p>{pelis.Type}</p>
+      <h3>{peli.Title}</h3>
+      <p>{peli.Year}</p>
+      <p>{peli.Type}</p>
     </div>
   )
 }

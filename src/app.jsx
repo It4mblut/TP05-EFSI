@@ -6,7 +6,7 @@ function App() {
     return (
         <div className="App">
             <h1>Movie List App</h1>
-            <MoviesList />
+            <ListaPelicula />
         </div>
     );
 }
