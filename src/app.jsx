@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { buscarPeli, detallesPeli } from './services/api.js'
 import SearchBar from './components/SearchBar.jsx'
 import ListaPelicula from './components/MovieList.jsx'
@@ -8,28 +8,38 @@ import ErrorMessage from './components/ErrorMessage.jsx'
 import './app.css'
 
 function App() {
-    const [pelis, setPelis] = useState([])
+    const [pelicula, setPelis] = useState([])
     const [peliculaSeleccionada, setPeliculaSeleccionada] = useState(null)
     const [cargando, setCargando] = useState(false)
     const [error, setError] = useState(null)
+    const [busquedaDelUsuario, setBusquedaDelUsuario] = useState("")
 
-    async function realizarBusqueda(titulo) {
-        setCargando(true)
-        setError(null)
-        setPeliculaSeleccionada(null)
-
-        const resultado = await buscarPeli(titulo)
-
-        if (resultado.Response === "True") {
-            setPelis(resultado.Search)
-        }
-        else {
-            setError(resultado.Error)
-            setPelis([])
-        }
-
-        setCargando(false)
+    function realizarBusqueda(titulo) {
+        setBusquedaDelUsuario(titulo)
     }
+
+    useEffect(() => {
+        async function buscar() {
+            if (busquedaDelUsuario === "") return
+
+            setCargando(true)
+            setError(null)
+            setPeliculaSeleccionada(null)
+
+            const resultado = await buscarPeli(busquedaDelUsuario)
+
+            if (resultado.Response === "True") {
+                setPelis(resultado.Search)
+            } else {
+                setError(resultado.Error)
+                setPelis([])
+            }
+
+            setCargando(false)
+        }
+
+        buscar()
+    }, [busquedaDelUsuario])
 
     async function seleccion(pelicula) {
         setCargando(true)
@@ -45,7 +55,7 @@ function App() {
     return (
         <div>
             <h1>Buscador de Películas</h1>
-            <SearchBar onSearch={realizarBusqueda } />
+            <SearchBar onSearch={realizarBusqueda} />
 
             {cargando && <Loader />}
 
