@@ -31,9 +31,9 @@ function App() {
         setCargando(false)
     }
 
-    async function seleccion(peli) {
+    async function seleccion(pelicula) {
         setCargando(true)
-        const detalle = await detallesPeli(peli.imdbID)
+        const detalle = await detallesPeli(pelicula.imdbID)
         setPeliculaSeleccionada(detalle)
         setCargando(false)
     }
@@ -55,12 +55,12 @@ function App() {
                 <MovieDetail pelicula={peliculaSeleccionada} volver={volver} />
             )}
 
-            {!peliculaSeleccionada && !cargando && pelis.length === 0 && !error && (
+            {!peliculaSeleccionada && !cargando && pelicula.length === 0 && !error && (
                 <p>Buscá una película o serie para empezar.</p>
             )}
 
-            {!peliculaSeleccionada && !cargando && pelis.length > 0 && (
-                <ListaPelicula pelis={pelis} onSelect={seleccion} />
+            {!peliculaSeleccionada && !cargando && pelicula.length > 0 && (
+                <ListaPelicula pelicula={pelicula} onSelect={seleccion} />
             )}
         </div>
     )

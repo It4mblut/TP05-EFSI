@@ -1,21 +1,21 @@
-function MovieDetail({ peli, volver }) {
+function MovieDetail({ peliculacula, volver }) {
   return (
   <div>
       <button onClick={volver}>← Volver</button>
-      <h2>{peli.Title}</h2>
-      <img src={peli.Poster !== "N/A" ? peli.Poster : "https://via.placeholder.com/300"} alt={peli.Title}/>
+      <h2>{pelicula.Title}</h2>
+      <img src={pelicula.Poster !== "N/A" ? pelicula.Poster : "https://via.placeholder.com/300"} alt={pelicula.Title}/>
 
-      <p><strong>Año:</strong> {peli.Year}</p>
-      <p><strong>Género:</strong> {peli.Genre}</p>
-      <p><strong>Director:</strong> {peli.Director}</p>
-      <p><strong>Actores principales:</strong> {peli.Actors}</p>
-      <p><strong>Sinopsis:</strong> {peli.Plot}</p>
-      <p><strong>Duración:</strong> {peli.Runtime}</p>
-      <p><strong>Idioma:</strong> {peli.Language}</p>
-      <p><strong>País:</strong> {peli.Country}</p>
+      <p><strong>Año:</strong> {pelicula.Year}</p>
+      <p><strong>Género:</strong> {pelicula.Genre}</p>
+      <p><strong>Director:</strong> {pelicula.Director}</p>
+      <p><strong>Actores principales:</strong> {pelicula.Actors}</p>
+      <p><strong>Sinopsis:</strong> {pelicula.Plot}</p>
+      <p><strong>Duración:</strong> {pelicula.Runtime}</p>
+      <p><strong>Idioma:</strong> {pelicula.Language}</p>
+      <p><strong>País:</strong> {pelicula.Country}</p>
 
-      {peli.imdbRating !== "N/A" && (
-        <p><strong>Puntaje IMDb:</strong> {peli.imdbRating}</p>
+      {pelicula.imdbRating !== "N/A" && (
+        <p><strong>Puntaje IMDb:</strong> {pelicula.imdbRating}</p>
       )}
     </div>
   )
