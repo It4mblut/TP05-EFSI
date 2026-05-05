@@ -5,7 +5,7 @@ import ListaPelicula from './components/MovieList.jsx'
 import MovieDetail from './components/MovieDetail.jsx'
 import Loader from './components/Loader.jsx'
 import ErrorMessage from './components/ErrorMessage.jsx'
-import './App.css'
+import './app.css'
 
 function App() {
     const [pelis, setPelis] = useState([])
